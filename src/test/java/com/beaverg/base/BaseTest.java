@@ -1,4 +1,4 @@
-package com.beaverg.tests;
+package com.beaverg.base;
 
 import com.beaverg.utils.WebDriverService;
 import org.openqa.selenium.WebDriver;

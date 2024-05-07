@@ -1,12 +1,13 @@
 package com.beaverg.components;
 
 import com.beaverg.pages.MobilePhonesPage;
+import com.beaverg.base.BaseElement;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MobilePhonesDropMenuComponent extends BaseComponent {
+public class MobilePhonesDropMenuComponent extends BaseElement {
     private final WebDriver driver;
 
     @FindBy(xpath = "//i[@class='icon-android']/following-sibling::span")

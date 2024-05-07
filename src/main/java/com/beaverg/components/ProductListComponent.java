@@ -2,6 +2,7 @@ package com.beaverg.components;
 
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.ProductPage;
+import com.beaverg.base.BaseElement;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 @FindBy(xpath = "//div[@class='products-list']")
-public class ProductListComponent extends BaseComponent {
+public class ProductListComponent extends BaseElement {
     private final WebDriver driver;
 
     @FindBy(xpath = ".//div//h5/a")

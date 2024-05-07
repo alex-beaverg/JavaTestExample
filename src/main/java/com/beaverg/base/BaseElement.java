@@ -1,4 +1,4 @@
-package com.beaverg.service;
+package com.beaverg.base;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

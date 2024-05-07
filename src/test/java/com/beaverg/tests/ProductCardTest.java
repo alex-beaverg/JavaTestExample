@@ -1,5 +1,6 @@
 package com.beaverg.tests;
 
+import com.beaverg.base.BaseTest;
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.*;
 import com.beaverg.utils.Config;

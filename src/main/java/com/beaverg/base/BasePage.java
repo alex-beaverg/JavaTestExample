@@ -1,7 +1,6 @@
-package com.beaverg.pages;
+package com.beaverg.base;
 
 import com.beaverg.components.MainMenuComponent;
-import com.beaverg.service.BaseElement;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage extends BaseElement {

@@ -1,5 +1,6 @@
 package com.beaverg.pages;
 
+import com.beaverg.base.BasePage;
 import com.beaverg.components.ProductListComponent;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;

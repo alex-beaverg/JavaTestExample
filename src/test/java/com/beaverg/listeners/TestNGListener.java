@@ -51,6 +51,7 @@ public class TestNGListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         File screenshot = ((TakesScreenshot) WebDriverService.getDriver()).getScreenshotAs(OutputType.FILE);
         try {
+            Allure.addAttachment("Log", FileUtils.openInputStream(tempLogFile));
             Allure.addAttachment(result.getName() + " screenshot", FileUtils.openInputStream(screenshot));
             FileUtils.write(tempLogFile, "", Charset.defaultCharset());
         } catch (IOException e) {

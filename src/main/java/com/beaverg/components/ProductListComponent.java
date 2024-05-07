@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 @FindBy(xpath = "//div[@class='products-list']")
-public class ProductsListComponent extends BaseComponent {
+public class ProductListComponent extends BaseComponent {
     private final WebDriver driver;
 
     @FindBy(xpath = ".//div//h5/a")
@@ -19,25 +19,27 @@ public class ProductsListComponent extends BaseComponent {
     @FindBy(xpath = ".//div//div[@class='price']/div")
     private List<WebElement> productCardPrices;
 
-    public ProductsListComponent(WebDriver driver) {
+    public ProductListComponent(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
 
     private List<String> getProductCardTitles() {
+        REPORT.info("\t- Getting Title List");
         return productCardTitles.stream()
                 .map(element -> Waiting.waitVisibility(driver, element).getText())
                 .toList();
     }
 
     private List<Double> getProductCardPrices() {
+        REPORT.info("\t- Getting Price List");
         return productCardPrices.stream()
                 .map(element -> Double.parseDouble(Waiting.waitVisibility(driver, element).getText().replace('€', ' ')))
                 .toList();
     }
 
     public ProductCard getProductCardByIndex(int index) {
-        REPORT.info(String.format("[INFO]: Getting Product Card from Products Page by index=%d!", index));
+        REPORT.info(String.format("[INFO]: Getting Product Card from Product List by index=%d!", index));
         return new ProductCard(getProductCardTitles().get(index), getProductCardPrices().get(index));
     }
 

@@ -21,19 +21,22 @@ public class ProductPage extends BasePage {
     }
 
     public boolean isPageOpen() {
+        REPORT.info("[INFO]: Product Page opening check");
         return Waiting.waitVisibility(driver, title).isDisplayed();
     }
 
     private String getProductCardTitle() {
+        REPORT.info("\t- Getting Title");
         return Waiting.waitVisibility(driver, title).getText();
     }
 
     private double getProductCardPrice() {
+        REPORT.info("\t- Getting Price");
         return Double.parseDouble(Waiting.waitVisibility(driver, price).getText().replace('€', ' '));
     }
 
     public ProductCard getProductCard() {
-        REPORT.info("[INFO]: Getting Product Card from Product Page!");
+        REPORT.info("[INFO]: Getting Product Card from Product Page:");
         return new ProductCard(getProductCardTitle(), getProductCardPrice());
     }
 }

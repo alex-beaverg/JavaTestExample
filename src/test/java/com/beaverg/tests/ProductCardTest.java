@@ -58,10 +58,10 @@ public class ProductCardTest extends BaseTest {
 
         int productIndex = Integer.parseInt(Config.getData("product_index"));
         ProductCard productCardFromProductsPage = mobilePhonesIOSPage
-                .getProductsList()
+                .getProductList()
                 .getProductCardByIndex(productIndex);
         ProductPage productPage = mobilePhonesIOSPage
-                .getProductsList()
+                .getProductList()
                 .clickProductCardTitleByIndex(productIndex);
         sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");
 

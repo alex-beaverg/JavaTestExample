@@ -1,6 +1,6 @@
 package com.beaverg.pages;
 
-import com.beaverg.components.ProductsListComponent;
+import com.beaverg.components.ProductListComponent;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class MobilePhonesAndroidPage extends BasePage {
     private final WebDriver driver;
-    private final ProductsListComponent productsList;
+    private final ProductListComponent productsList;
 
     @FindBy(xpath = "//header//h1/span")
     private WebElement title;
@@ -16,14 +16,17 @@ public class MobilePhonesAndroidPage extends BasePage {
     public MobilePhonesAndroidPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        productsList = new ProductsListComponent(this.driver);
+        productsList = new ProductListComponent(this.driver);
     }
 
     public boolean isPageOpen() {
-        return Waiting.waitVisibility(driver, title).isDisplayed();
+        REPORT.info("[INFO]: Android Mobile Phones Page opening check");
+        return Waiting.waitVisibility(driver, title).isDisplayed() &&
+                Waiting.waitVisibility(driver, title).getText().equals("Android OS");
     }
 
-    public ProductsListComponent getProductsList() {
+    public ProductListComponent getProductsList() {
+        REPORT.info("[INFO]: Getting Product List");
         Waiting.waitPageLoading(driver);
         return productsList;
     }

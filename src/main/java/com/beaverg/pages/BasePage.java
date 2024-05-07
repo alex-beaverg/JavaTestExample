@@ -15,6 +15,7 @@ public class BasePage extends BaseElement {
     }
 
     public MainMenuComponent getMainMenuElement() {
+        REPORT.info("[INFO]: Getting Main Menu");
         return mainMenuElement;
     }
 }

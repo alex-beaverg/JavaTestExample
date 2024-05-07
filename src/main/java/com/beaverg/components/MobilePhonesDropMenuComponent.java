@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.beaverg.utils.Printers.PRINTLN;
-
 public class MobilePhonesDropMenuComponent extends BaseComponent {
     private final WebDriver driver;
 
@@ -24,13 +22,13 @@ public class MobilePhonesDropMenuComponent extends BaseComponent {
 
     public MobilePhonesAndroidPage clickAndroidIcon() {
         clickWithWaiting(androidIcon);
-        PRINTLN.info("[INFO]: Drop menu item 'Android' was clicked!");
+        REPORT.info("[INFO]: Drop menu item 'Android' was clicked!");
         return new MobilePhonesAndroidPage(driver);
     }
 
     public MobilePhonesIOSPage clickIOSIcon() {
         clickWithWaiting(iOSIcon);
-        PRINTLN.info("[INFO]: Drop menu item 'iOS' was clicked!");
+        REPORT.info("[INFO]: Drop menu item 'iOS' was clicked!");
         return new MobilePhonesIOSPage(driver);
     }
 }

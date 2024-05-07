@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.beaverg.utils.Printers.*;
-
 public class MainMenuComponent extends BaseComponent {
     private final WebDriver driver;
 
@@ -19,7 +17,7 @@ public class MainMenuComponent extends BaseComponent {
 
     public MobilePhonesDropMenuComponent clickMobilePhonesItem() {
         clickWithWaiting(mobilePhonesItem);
-        PRINTLN.info("[INFO]: Main menu item 'Mobile phones' was clicked!");
+        REPORT.info("[INFO]: Main menu item 'Mobile phones' was clicked!");
         return new MobilePhonesDropMenuComponent(driver);
     }
 }

@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static com.beaverg.utils.Printers.PRINTLN;
-
 @FindBy(xpath = "//div[@class='products-list']")
 public class ProductsListComponent extends BaseComponent {
     private final WebDriver driver;
@@ -38,12 +36,12 @@ public class ProductsListComponent extends BaseComponent {
     }
 
     public ProductCard getProductCardByIndex(int index) {
-        PRINTLN.info(String.format("[INFO]: Getting Product Card from Products Page by index=%d!", index));
+        REPORT.info(String.format("[INFO]: Getting Product Card from Products Page by index=%d!", index));
         return new ProductCard(getProductCardTitles().get(index), getProductCardPrices().get(index));
     }
 
     public ProductPage clickProductCardTitleByIndex(int index) {
-        PRINTLN.info(String.format("[INFO]: Product Card by index=%d was clicked!", index));
+        REPORT.info(String.format("[INFO]: Product Card by index=%d was clicked!", index));
         clickWithWaiting(productCardTitles.get(index));
         return new ProductPage(driver);
     }

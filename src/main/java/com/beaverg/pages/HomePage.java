@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.beaverg.utils.Printers.*;
-
 public class HomePage extends BasePage {
     private final String home_url;
     private final WebDriver driver;
@@ -27,6 +25,6 @@ public class HomePage extends BasePage {
 
     public void clickCookiesButton() {
         clickWithWaiting(cookiesButton);
-        PRINTLN.info("[INFO]: Button 'Agreement to use cookies' was clicked!");
+        REPORT.info("[INFO]: Button 'Agreement to use cookies' was clicked!");
     }
 }

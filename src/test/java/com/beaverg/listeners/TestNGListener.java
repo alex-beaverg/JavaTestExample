@@ -12,10 +12,12 @@ import org.testng.ITestResult;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import static com.beaverg.utils.Printers.*;
 
 public class TestNGListener implements ITestListener {
+    private final File tempLogFile = new File("target/test_report.log");
     public static final Logger LOGGER = LogManager.getLogger(TestNGListener.class);
 
     // Colors:
@@ -34,6 +36,12 @@ public class TestNGListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
+        try {
+            Allure.addAttachment("Log", FileUtils.openInputStream(tempLogFile));
+            FileUtils.write(tempLogFile, "", Charset.defaultCharset());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Allure.addAttachment("Message", String.format("Test '%s' was completed successfully!", result.getName()));
         PRINTLN.info(String.format(ANSI_GREEN + "Test '%s' was completed successfully!", result.getName()));
         PRINTLN.info(ANSI_RESET);
@@ -44,6 +52,7 @@ public class TestNGListener implements ITestListener {
         File screenshot = ((TakesScreenshot) WebDriverService.getDriver()).getScreenshotAs(OutputType.FILE);
         try {
             Allure.addAttachment(result.getName() + " screenshot", FileUtils.openInputStream(screenshot));
+            FileUtils.write(tempLogFile, "", Charset.defaultCharset());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -54,6 +63,11 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onTestSkipped(ITestResult result) {
         Allure.addAttachment("Message", String.format("Test '%s' was skipped!", result.getName()));
+        try {
+            FileUtils.write(tempLogFile, "", Charset.defaultCharset());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         PRINTLN.info(String.format(ANSI_YELLOW + "Test '%s' was skipped!", result.getName()));
         PRINTLN.info(ANSI_RESET);
     }

@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.beaverg.utils.Printers.PRINTLN;
-
 public class ProductPage extends BasePage {
     private final WebDriver driver;
 
@@ -34,7 +32,7 @@ public class ProductPage extends BasePage {
     }
 
     public ProductCard getProductCard() {
-        PRINTLN.info("[INFO]: Getting Product Card from Product Page!");
+        REPORT.info("[INFO]: Getting Product Card from Product Page!");
         return new ProductCard(getProductCardTitle(), getProductCardPrice());
     }
 }

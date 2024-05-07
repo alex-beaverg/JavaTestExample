@@ -2,6 +2,7 @@ package com.beaverg.components;
 
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.ProductPage;
+import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,13 +26,13 @@ public class ProductsListComponent extends BaseComponent {
 
     private List<String> getProductCardTitles() {
         return productCardTitles.stream()
-                .map(WebElement::getText)
+                .map(element -> Waiting.waitVisibility(driver, element).getText())
                 .toList();
     }
 
     private List<Double> getProductCardPrices() {
         return productCardPrices.stream()
-                .map(element -> Double.parseDouble(element.getText().replace('€', ' ')))
+                .map(element -> Double.parseDouble(Waiting.waitVisibility(driver, element).getText().replace('€', ' ')))
                 .toList();
     }
 
@@ -41,8 +42,8 @@ public class ProductsListComponent extends BaseComponent {
     }
 
     public ProductPage clickProductCardTitleByIndex(int index) {
+        Waiting.clickWithWaiting(driver, productCardTitles.get(index));
         REPORT.info(String.format("[INFO]: Product Card by index=%d was clicked!", index));
-        clickWithWaiting(productCardTitles.get(index));
         return new ProductPage(driver);
     }
 }

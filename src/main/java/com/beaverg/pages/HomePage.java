@@ -1,9 +1,13 @@
 package com.beaverg.pages;
 
 import com.beaverg.utils.Config;
+import com.beaverg.utils.Waiting;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Set;
 
 public class HomePage extends BasePage {
     private final String home_url;
@@ -24,7 +28,8 @@ public class HomePage extends BasePage {
     }
 
     public void clickCookiesButton() {
-        clickWithWaiting(cookiesButton);
+        Waiting.waitPageLoading(driver);
+        Waiting.clickWithWaiting(driver, cookiesButton);
         REPORT.info("[INFO]: Button 'Agreement to use cookies' was clicked!");
     }
 }

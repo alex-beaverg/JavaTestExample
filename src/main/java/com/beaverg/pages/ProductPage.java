@@ -1,6 +1,7 @@
 package com.beaverg.pages;
 
 import com.beaverg.domain.ProductCard;
+import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,15 +21,15 @@ public class ProductPage extends BasePage {
     }
 
     public boolean isPageOpen() {
-        return title.isDisplayed();
+        return Waiting.waitVisibility(driver, title).isDisplayed();
     }
 
     private String getProductCardTitle() {
-        return title.getText();
+        return Waiting.waitVisibility(driver, title).getText();
     }
 
     private double getProductCardPrice() {
-        return Double.parseDouble(price.getText().replace('€', ' '));
+        return Double.parseDouble(Waiting.waitVisibility(driver, price).getText().replace('€', ' '));
     }
 
     public ProductCard getProductCard() {

@@ -1,5 +1,6 @@
 package com.beaverg.components;
 
+import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +17,7 @@ public class MainMenuComponent extends BaseComponent {
     }
 
     public MobilePhonesDropMenuComponent clickMobilePhonesItem() {
-        clickWithWaiting(mobilePhonesItem);
+        Waiting.clickWithWaiting(driver, mobilePhonesItem);
         REPORT.info("[INFO]: Main menu item 'Mobile phones' was clicked!");
         return new MobilePhonesDropMenuComponent(driver);
     }

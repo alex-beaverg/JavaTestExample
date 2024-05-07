@@ -1,6 +1,7 @@
 package com.beaverg.pages;
 
 import com.beaverg.components.ProductsListComponent;
+import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,10 +20,11 @@ public class MobilePhonesAndroidPage extends BasePage {
     }
 
     public boolean isPageOpen() {
-        return title.isDisplayed();
+        return Waiting.waitVisibility(driver, title).isDisplayed();
     }
 
     public ProductsListComponent getProductsList() {
+        Waiting.waitPageLoading(driver);
         return productsList;
     }
 }

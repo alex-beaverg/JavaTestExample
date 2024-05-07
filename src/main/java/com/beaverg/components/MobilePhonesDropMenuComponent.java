@@ -2,6 +2,7 @@ package com.beaverg.components;
 
 import com.beaverg.pages.MobilePhonesAndroidPage;
 import com.beaverg.pages.MobilePhonesIOSPage;
+import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,13 +22,13 @@ public class MobilePhonesDropMenuComponent extends BaseComponent {
     }
 
     public MobilePhonesAndroidPage clickAndroidIcon() {
-        clickWithWaiting(androidIcon);
+        Waiting.clickWithWaiting(driver, androidIcon);
         REPORT.info("[INFO]: Drop menu item 'Android' was clicked!");
         return new MobilePhonesAndroidPage(driver);
     }
 
     public MobilePhonesIOSPage clickIOSIcon() {
-        clickWithWaiting(iOSIcon);
+        Waiting.clickWithWaiting(driver, iOSIcon);
         REPORT.info("[INFO]: Drop menu item 'iOS' was clicked!");
         return new MobilePhonesIOSPage(driver);
     }

@@ -3,6 +3,7 @@ package com.beaverg.tests;
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.HomePage;
 import com.beaverg.pages.MobilePhonesAndroidPage;
+import com.beaverg.pages.MobilePhonesIOSPage;
 import com.beaverg.pages.ProductPage;
 import com.beaverg.utils.Config;
 import io.qameta.allure.*;
@@ -49,23 +50,23 @@ public class ProductCardTest extends BaseTest {
 
         HomePage homePage = getHomePageWithAssertion();
 
-//        MobilePhonesAndroidPage mobilePhonesAndroidPage = homePage
-//                .getMainMenuElement()
-//                .clickMobilePhonesItem()
-//                .clickAndroidIcon();
-//        sa.assertTrue(mobilePhonesAndroidPage.isPageOpen(), "Android Mobile Phones Page isn't open!");
-//
-//        int productIndex = Integer.parseInt(Config.getData("product_index"));
-//        ProductCard productCardFromProductsPage = mobilePhonesAndroidPage
-//                .getProductsList()
-//                .getProductCardByIndex(productIndex);
-//        ProductPage productPage = mobilePhonesAndroidPage
-//                .getProductsList()
-//                .clickProductCardTitleByIndex(productIndex);
-//        sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");
-//
-//        ProductCard productCardFromProductPage = productPage.getProductCard();
-//        sa.assertEquals(productCardFromProductPage, productCardFromProductsPage, "Product Cards aren't equal!");
+        MobilePhonesIOSPage mobilePhonesIOSPage = homePage
+                .getMainMenuElement()
+                .clickMobilePhonesItem()
+                .clickIOSIcon();
+        sa.assertTrue(mobilePhonesIOSPage.isPageOpen(), "IOS Mobile Phones Page isn't open!");
+
+        int productIndex = Integer.parseInt(Config.getData("product_index"));
+        ProductCard productCardFromProductsPage = mobilePhonesIOSPage
+                .getProductsList()
+                .getProductCardByIndex(productIndex);
+        ProductPage productPage = mobilePhonesIOSPage
+                .getProductsList()
+                .clickProductCardTitleByIndex(productIndex);
+        sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");
+
+        ProductCard productCardFromProductPage = productPage.getProductCard();
+        sa.assertEquals(productCardFromProductPage, productCardFromProductsPage, "Product Cards aren't equal!");
 
         sa.assertAll();
     }

@@ -1,7 +1,6 @@
 package com.beaverg.components;
 
-import com.beaverg.pages.MobilePhonesAndroidPage;
-import com.beaverg.pages.MobilePhonesIOSPage;
+import com.beaverg.pages.MobilePhonesPage;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,20 +15,29 @@ public class MobilePhonesDropMenuComponent extends BaseComponent {
     @FindBy(xpath = "//i[@class='icon-apple']/following-sibling::span")
     private WebElement iOSIcon;
 
+    @FindBy(xpath = "//ul[@class='drop-menu']//a[contains(@href, 'premium')]/span")
+    private WebElement premiumIcon;
+
     public MobilePhonesDropMenuComponent(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
 
-    public MobilePhonesAndroidPage clickAndroidIcon() {
+    public MobilePhonesPage clickAndroidIcon() {
         Waiting.clickWithWaiting(driver, androidIcon);
         REPORT.info("[INFO]: Drop menu item 'Android' was clicked!");
-        return new MobilePhonesAndroidPage(driver);
+        return new MobilePhonesPage(driver);
     }
 
-    public MobilePhonesIOSPage clickIOSIcon() {
+    public MobilePhonesPage clickIOSIcon() {
         Waiting.clickWithWaiting(driver, iOSIcon);
         REPORT.info("[INFO]: Drop menu item 'iOS' was clicked!");
-        return new MobilePhonesIOSPage(driver);
+        return new MobilePhonesPage(driver);
+    }
+
+    public MobilePhonesPage clickPremiumIcon() {
+        Waiting.clickWithWaiting(driver, premiumIcon);
+        REPORT.info("[INFO]: Drop menu item 'Premium phones' was clicked!");
+        return new MobilePhonesPage(driver);
     }
 }

@@ -6,28 +6,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MobilePhonesAndroidPage extends BasePage {
+public class MobilePhonesPage extends BasePage {
     private final WebDriver driver;
-    private final ProductListComponent productsList;
+    private final ProductListComponent productList;
 
     @FindBy(xpath = "//header//h1/span")
     private WebElement title;
 
-    public MobilePhonesAndroidPage(WebDriver driver) {
+    public MobilePhonesPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        productsList = new ProductListComponent(this.driver);
+        productList = new ProductListComponent(this.driver);
     }
 
-    public boolean isPageOpen() {
-        REPORT.info("[INFO]: Android Mobile Phones Page opening check");
+    public boolean isPageOpen(String pageTitle) {
+        REPORT.info("[INFO]: Premium Mobile Phones Page opening check");
         return Waiting.waitVisibility(driver, title).isDisplayed() &&
-                Waiting.waitVisibility(driver, title).getText().equals("Android OS");
+                Waiting.waitVisibility(driver, title).getText().equals(pageTitle);
     }
 
-    public ProductListComponent getProductsList() {
+    public ProductListComponent getProductList() {
         REPORT.info("[INFO]: Getting Product List");
         Waiting.waitPageLoading(driver);
-        return productsList;
+        return productList;
     }
 }

@@ -1,10 +1,7 @@
 package com.beaverg.tests;
 
 import com.beaverg.domain.ProductCard;
-import com.beaverg.pages.HomePage;
-import com.beaverg.pages.MobilePhonesAndroidPage;
-import com.beaverg.pages.MobilePhonesIOSPage;
-import com.beaverg.pages.ProductPage;
+import com.beaverg.pages.*;
 import com.beaverg.utils.Config;
 import io.qameta.allure.*;
 import org.testng.Assert;
@@ -18,57 +15,46 @@ public class ProductCardTest extends BaseTest {
     @Test
     @Description("Verifying android mobile phone product card test")
     public void verifyAndroidMobilePhoneProductCardTest() {
-        SoftAssert sa = new SoftAssert();
-
         HomePage homePage = getHomePageWithAssertion();
 
-        MobilePhonesAndroidPage mobilePhonesAndroidPage = homePage
+        MobilePhonesPage mobilePhonesAndroidPage = homePage
                 .getMainMenuElement()
                 .clickMobilePhonesItem()
                 .clickAndroidIcon();
-        sa.assertTrue(mobilePhonesAndroidPage.isPageOpen(), "Android Mobile Phones Page isn't open!");
+        Assert.assertTrue(mobilePhonesAndroidPage.isPageOpen("Android OS"),
+                "Android Mobile Phones Page isn't open!");
 
-        int productIndex = Integer.parseInt(Config.getData("product_index"));
-        ProductCard productCardFromProductsPage = mobilePhonesAndroidPage
-                .getProductsList()
-                .getProductCardByIndex(productIndex);
-        ProductPage productPage = mobilePhonesAndroidPage
-                .getProductsList()
-                .clickProductCardTitleByIndex(productIndex);
-        sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");
-
-        ProductCard productCardFromProductPage = productPage.getProductCard();
-        sa.assertEquals(productCardFromProductPage, productCardFromProductsPage, "Product Cards aren't equal!");
-
-        sa.assertAll();
+        compareCards(mobilePhonesAndroidPage);
     }
 
     @Test
     @Description("Verifying iOS mobile phone product card test")
     public void verifyIOSMobilePhoneProductCardTest() {
-        SoftAssert sa = new SoftAssert();
-
         HomePage homePage = getHomePageWithAssertion();
 
-        MobilePhonesIOSPage mobilePhonesIOSPage = homePage
+        MobilePhonesPage mobilePhonesIOSPage = homePage
                 .getMainMenuElement()
                 .clickMobilePhonesItem()
                 .clickIOSIcon();
-        sa.assertTrue(mobilePhonesIOSPage.isPageOpen(), "IOS Mobile Phones Page isn't open!");
+        Assert.assertTrue(mobilePhonesIOSPage.isPageOpen("iOS operating system"),
+                "IOS Mobile Phones Page isn't open!");
 
-        int productIndex = Integer.parseInt(Config.getData("product_index"));
-        ProductCard productCardFromProductsPage = mobilePhonesIOSPage
-                .getProductList()
-                .getProductCardByIndex(productIndex);
-        ProductPage productPage = mobilePhonesIOSPage
-                .getProductList()
-                .clickProductCardTitleByIndex(productIndex);
-        sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");
+        compareCards(mobilePhonesIOSPage);
+    }
 
-        ProductCard productCardFromProductPage = productPage.getProductCard();
-        sa.assertEquals(productCardFromProductPage, productCardFromProductsPage, "Product Cards aren't equal!");
+    @Test
+    @Description("Verifying Premium mobile phone product card test")
+    public void verifyPremiumMobilePhoneProductCardTest() {
+        HomePage homePage = getHomePageWithAssertion();
 
-        sa.assertAll();
+        MobilePhonesPage mobilePhonesPremiumPage = homePage
+                .getMainMenuElement()
+                .clickMobilePhonesItem()
+                .clickPremiumIcon();
+        Assert.assertTrue(mobilePhonesPremiumPage.isPageOpen("Premium phones"),
+                "Premium Mobile Phones Page isn't open!");
+
+        compareCards(mobilePhonesPremiumPage);
     }
 
     private HomePage getHomePageWithAssertion() {
@@ -76,5 +62,24 @@ public class ProductCardTest extends BaseTest {
         homePage.clickCookiesButton();
         Assert.assertTrue(homePage.isPageOpen(), "Home page isn't open!");
         return homePage;
+    }
+
+    private void compareCards(MobilePhonesPage page) {
+        SoftAssert sa = new SoftAssert();
+
+        int productIndex = Integer.parseInt(Config.getData("product_index"));
+        ProductCard productCardFromProductsPage = page
+                .getProductList()
+                .getProductCardByIndex(productIndex);
+        ProductPage productPage = page
+                .getProductList()
+                .clickProductCardTitleByIndex(productIndex);
+        sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");
+
+        ProductCard productCardFromProductPage = productPage.getProductCard();
+        sa.assertEquals(productCardFromProductPage, productCardFromProductsPage,
+                "Product Cards aren't equal!");
+
+        sa.assertAll();
     }
 }

@@ -26,7 +26,7 @@ public class BasketTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesAndroidPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickAndroidIcon();
         sa.assertTrue(mobilePhonesAndroidPage.isPageOpen("Android OS"),
@@ -36,10 +36,10 @@ public class BasketTest extends BaseTest {
         ProductCard productCardFromProductsPage = mobilePhonesAndroidPage
                 .getProductList()
                 .getProductCardByIndex(productIndex);
-        BasketDropComponent basketPopupComponent = mobilePhonesAndroidPage
+        BasketDropComponent basketDropComponent = mobilePhonesAndroidPage
                 .getProductList()
                 .clickAddToBasketByIndex(productIndex);
-        BasketPage basketPage = basketPopupComponent
+        BasketPage basketPage = basketDropComponent
                 .clickGoToCheckoutButton();
         sa.assertTrue(basketPage.isPageOpen("My Shopping Basket"),
                 "Basket Page isn't open!");
@@ -47,6 +47,49 @@ public class BasketTest extends BaseTest {
         ProductCard productCardFromBasket = basketPage
                 .getBasketItemByIndex(0);
         sa.assertEquals(productCardFromBasket, productCardFromProductsPage,
+                "Product Cards aren't equal!");
+
+        sa.assertAll();
+    }
+
+    @Test
+    @Story("Adding products to basket testing")
+    @Description("Verifying Adding 2 products to basket test")
+    public void verifyAddingTwoProductsToBasketTest() {
+        SoftAssert sa = new SoftAssert();
+        HomePage homePage = getHomePage();
+
+        ProductListPage mobilePhonesAndroidPage = homePage
+                .getMainMenuComponent()
+                .clickMobilePhonesItem()
+                .clickAndroidIcon();
+        sa.assertTrue(mobilePhonesAndroidPage.isPageOpen("Android OS"),
+                "Android mobile phones Page isn't open!");
+
+        ProductCard productCardFromProductsPage1 = mobilePhonesAndroidPage
+                .getProductList()
+                .getProductCardByIndex(0);
+        ProductCard productCardFromProductsPage2 = mobilePhonesAndroidPage
+                .getProductList()
+                .getProductCardByIndex(1);
+        mobilePhonesAndroidPage.getProductList().clickAddToBasketByIndex(0);
+        homePage.getTopMenuComponent().closeBasketDropComponent();
+        BasketDropComponent basketDropComponent = mobilePhonesAndroidPage
+                .getProductList()
+                .clickAddToBasketByIndex(1);
+
+        BasketPage basketPage = basketDropComponent
+                .clickGoToCheckoutButton();
+        sa.assertTrue(basketPage.isPageOpen("My Shopping Basket"),
+                "Basket Page isn't open!");
+
+        ProductCard productCardFromBasket1 = basketPage
+                .getBasketItemByIndex(0);
+        ProductCard productCardFromBasket2 = basketPage
+                .getBasketItemByIndex(1);
+        sa.assertEquals(productCardFromBasket1, productCardFromProductsPage1,
+                "Product Cards aren't equal!");
+        sa.assertEquals(productCardFromBasket2, productCardFromProductsPage2,
                 "Product Cards aren't equal!");
 
         sa.assertAll();

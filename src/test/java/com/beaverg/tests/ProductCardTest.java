@@ -19,7 +19,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesAndroidPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickAndroidIcon();
         Assert.assertTrue(mobilePhonesAndroidPage.isPageOpen("Android OS"),
@@ -35,7 +35,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesIOSPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickIOSIcon();
         Assert.assertTrue(mobilePhonesIOSPage.isPageOpen("iOS operating system"),
@@ -51,7 +51,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesPremiumPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickPremiumIcon();
         Assert.assertTrue(mobilePhonesPremiumPage.isPageOpen("Premium phones"),
@@ -67,7 +67,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesEconomicPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickEconomicIcon();
         Assert.assertTrue(mobilePhonesEconomicPage.isPageOpen("Economic phones"),
@@ -83,7 +83,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesBasicPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickBasicIcon();
         Assert.assertTrue(mobilePhonesBasicPage.isPageOpen("Basic phones"),
@@ -99,7 +99,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesSingleSimPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickSingleSimIcon();
         Assert.assertTrue(mobilePhonesSingleSimPage.isPageOpen("Top 10 single SIM phones"),
@@ -115,7 +115,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesDualSimPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickMobilePhonesItem()
                 .clickDualSimIcon();
         Assert.assertTrue(mobilePhonesDualSimPage.isPageOpen("Top 10 dual SIM phones"),
@@ -131,7 +131,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage tabletsPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickElectronicsItem()
                 .clickTabletsIcon();
         Assert.assertTrue(tabletsPage.isPageOpen("Tablets"),
@@ -147,7 +147,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage smartwatchesPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickElectronicsItem()
                 .clickSmartwatchesIcon();
         Assert.assertTrue(smartwatchesPage.isPageOpen("Smartwatches"),
@@ -163,7 +163,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage speakersPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickElectronicsItem()
                 .clickSpeakersIcon();
         Assert.assertTrue(speakersPage.isPageOpen("Speakers"),
@@ -179,7 +179,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage laptopsPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickElectronicsItem()
                 .clickLaptopsIcon();
         Assert.assertTrue(laptopsPage.isPageOpen("Laptops"),
@@ -195,7 +195,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage consolePage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickElectronicsItem()
                 .clickConsoleIcon();
         Assert.assertTrue(consolePage.isPageOpen("Gaming console"),
@@ -211,7 +211,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage cleanerPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickElectronicsItem()
                 .clickCleanerIcon();
         Assert.assertTrue(cleanerPage.isPageOpen("Vacuum cleaner"),
@@ -227,7 +227,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage hardwarePage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickElectronicsItem()
                 .clickHardwareIcon();
         Assert.assertTrue(hardwarePage.isPageOpen("Computer hardware"),
@@ -243,7 +243,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage headphonesPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickAccessoriesItem()
                 .clickHeadphonesIcon();
         Assert.assertTrue(headphonesPage.isPageOpen("Headphones"),
@@ -259,7 +259,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         ProductListPage accessoriesPage = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickAccessoriesItem()
                 .clickAccessoriesIcon();
         Assert.assertTrue(accessoriesPage.isPageOpen("Other accessories"),
@@ -275,7 +275,7 @@ public class ProductCardTest extends BaseTest {
         HomePage homePage = getHomePage();
 
         BrandsDropMenuComponent brandsDropMenuComponent = homePage
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickBrandsItem();
         String brandName = brandsDropMenuComponent.getBrandNameByIndex(brandIndex);
         ProductListPage brandPage = brandsDropMenuComponent
@@ -299,7 +299,7 @@ public class ProductCardTest extends BaseTest {
     private int getBrandsNumber() {
         setup();
         int numbers = getHomePage()
-                .getMainMenuElement()
+                .getMainMenuComponent()
                 .clickBrandsItem()
                 .getBrandNamesNumber();
         teardown();

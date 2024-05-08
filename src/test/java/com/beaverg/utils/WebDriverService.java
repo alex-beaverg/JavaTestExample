@@ -12,7 +12,7 @@ public class WebDriverService {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            String browserName = Config.getProperty("browser");
+            String browserName = PropertyGetter.getProperty("browser");
             switch (browserName) {
                 case ("firefox") -> driver = new FirefoxDriver();
                 case ("edge") -> driver = new EdgeDriver();

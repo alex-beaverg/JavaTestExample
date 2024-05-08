@@ -19,6 +19,18 @@ public class MobilePhonesDropMenuComponent extends BaseElement {
     @FindBy(xpath = "//ul[@class='drop-menu']//a[contains(@href, 'premium')]/span")
     private WebElement premiumIcon;
 
+    @FindBy(xpath = "//ul[@class='drop-menu']//a[contains(@href, 'economic')]/span")
+    private WebElement economicIcon;
+
+    @FindBy(xpath = "//ul[@class='drop-menu']//a[contains(@href, 'basic')]/span")
+    private WebElement basicIcon;
+
+    @FindBy(xpath = "//ul[@class='drop-menu']//a[contains(@href, 'single-sim')]/span")
+    private WebElement singleSimIcon;
+
+    @FindBy(xpath = "//ul[@class='drop-menu']//a[contains(@href, 'dual-sim')]/span")
+    private WebElement dualSimIcon;
+
     public MobilePhonesDropMenuComponent(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -39,6 +51,30 @@ public class MobilePhonesDropMenuComponent extends BaseElement {
     public ProductListPage clickPremiumIcon() {
         Waiting.clickWithWaiting(driver, premiumIcon);
         REPORT.info("[INFO]: Drop menu item 'Premium phones' was clicked!");
+        return new ProductListPage(driver);
+    }
+
+    public ProductListPage clickEconomicIcon() {
+        Waiting.clickWithWaiting(driver, economicIcon);
+        REPORT.info("[INFO]: Drop menu item 'Economic phones' was clicked!");
+        return new ProductListPage(driver);
+    }
+
+    public ProductListPage clickBasicIcon() {
+        Waiting.clickWithWaiting(driver, basicIcon);
+        REPORT.info("[INFO]: Drop menu item 'Basic phones' was clicked!");
+        return new ProductListPage(driver);
+    }
+
+    public ProductListPage clickSingleSimIcon() {
+        Waiting.clickWithWaiting(driver, singleSimIcon);
+        REPORT.info("[INFO]: Drop menu item 'Top 10 Single SIM phones' was clicked!");
+        return new ProductListPage(driver);
+    }
+
+    public ProductListPage clickDualSimIcon() {
+        Waiting.clickWithWaiting(driver, dualSimIcon);
+        REPORT.info("[INFO]: Drop menu item 'Top 10 Dual SIM phones' was clicked!");
         return new ProductListPage(driver);
     }
 }

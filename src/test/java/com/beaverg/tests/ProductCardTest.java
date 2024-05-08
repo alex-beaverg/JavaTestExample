@@ -3,7 +3,7 @@ package com.beaverg.tests;
 import com.beaverg.base.BaseTest;
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.*;
-import com.beaverg.utils.Config;
+import com.beaverg.utils.PropertyGetter;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -16,7 +16,7 @@ public class ProductCardTest extends BaseTest {
     @Test
     @Description("Verifying android mobile phone product card test")
     public void verifyAndroidMobilePhoneProductCardTest() {
-        HomePage homePage = getHomePageWithAssertion();
+        HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesAndroidPage = homePage
                 .getMainMenuElement()
@@ -31,7 +31,7 @@ public class ProductCardTest extends BaseTest {
     @Test
     @Description("Verifying iOS mobile phone product card test")
     public void verifyIOSMobilePhoneProductCardTest() {
-        HomePage homePage = getHomePageWithAssertion();
+        HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesIOSPage = homePage
                 .getMainMenuElement()
@@ -46,7 +46,7 @@ public class ProductCardTest extends BaseTest {
     @Test
     @Description("Verifying Premium mobile phone product card test")
     public void verifyPremiumMobilePhoneProductCardTest() {
-        HomePage homePage = getHomePageWithAssertion();
+        HomePage homePage = getHomePage();
 
         ProductListPage mobilePhonesPremiumPage = homePage
                 .getMainMenuElement()
@@ -58,7 +58,67 @@ public class ProductCardTest extends BaseTest {
         compareCards(mobilePhonesPremiumPage);
     }
 
-    private HomePage getHomePageWithAssertion() {
+    @Test
+    @Description("Verifying Economic mobile phone product card test")
+    public void verifyEconomicMobilePhoneProductCardTest() {
+        HomePage homePage = getHomePage();
+
+        ProductListPage mobilePhonesEconomicPage = homePage
+                .getMainMenuElement()
+                .clickMobilePhonesItem()
+                .clickEconomicIcon();
+        Assert.assertTrue(mobilePhonesEconomicPage.isPageOpen("Economic phones"),
+                "Economic Mobile Phones Page isn't open!");
+
+        compareCards(mobilePhonesEconomicPage);
+    }
+
+    @Test
+    @Description("Verifying Basic mobile phone product card test")
+    public void verifyBasicMobilePhoneProductCardTest() {
+        HomePage homePage = getHomePage();
+
+        ProductListPage mobilePhonesBasicPage = homePage
+                .getMainMenuElement()
+                .clickMobilePhonesItem()
+                .clickBasicIcon();
+        Assert.assertTrue(mobilePhonesBasicPage.isPageOpen("Basic phones"),
+                "Basic Mobile Phones Page isn't open!");
+
+        compareCards(mobilePhonesBasicPage);
+    }
+
+    @Test
+    @Description("Verifying Top 10 Single SIM mobile phone product card test")
+    public void verifySingleSimMobilePhoneProductCardTest() {
+        HomePage homePage = getHomePage();
+
+        ProductListPage mobilePhonesSingleSimPage = homePage
+                .getMainMenuElement()
+                .clickMobilePhonesItem()
+                .clickSingleSimIcon();
+        Assert.assertTrue(mobilePhonesSingleSimPage.isPageOpen("Top 10 single SIM phones"),
+                "Top 10 single SIM Mobile Phones Page isn't open!");
+
+        compareCards(mobilePhonesSingleSimPage);
+    }
+
+    @Test
+    @Description("Verifying Top 10 Dual SIM mobile phone product card test")
+    public void verifyDualSimMobilePhoneProductCardTest() {
+        HomePage homePage = getHomePage();
+
+        ProductListPage mobilePhonesDualSimPage = homePage
+                .getMainMenuElement()
+                .clickMobilePhonesItem()
+                .clickDualSimIcon();
+        Assert.assertTrue(mobilePhonesDualSimPage.isPageOpen("Top 10 dual SIM phones"),
+                "Top 10 dual SIM Mobile Phones Page isn't open!");
+
+        compareCards(mobilePhonesDualSimPage);
+    }
+
+    private HomePage getHomePage() {
         HomePage homePage = new HomePage(driver);
         homePage.clickCookiesButton();
         Assert.assertTrue(homePage.isPageOpen(), "Home page isn't open!");
@@ -68,7 +128,7 @@ public class ProductCardTest extends BaseTest {
     private void compareCards(ProductListPage productListPage) {
         SoftAssert sa = new SoftAssert();
 
-        int productIndex = Integer.parseInt(Config.getData("product_index"));
+        int productIndex = Integer.parseInt(PropertyGetter.getData("product_index"));
         ProductCard productCardFromProductsPage = productListPage
                 .getProductList()
                 .getProductCardByIndex(productIndex);

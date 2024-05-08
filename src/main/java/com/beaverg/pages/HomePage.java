@@ -1,7 +1,7 @@
 package com.beaverg.pages;
 
 import com.beaverg.base.BasePage;
-import com.beaverg.utils.Config;
+import com.beaverg.utils.PropertyGetter;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +16,7 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        home_url = Config.getProperty("home_url");
+        home_url = PropertyGetter.getProperty("home_url");
         this.driver = driver;
         this.driver.get(home_url);
     }

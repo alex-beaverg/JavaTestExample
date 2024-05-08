@@ -32,14 +32,14 @@ public class BasketPage extends BasePage {
                 Waiting.waitVisibility(driver, title).getText().equals(pageTitle);
     }
 
-    private List<String> getBasketItemTitles() {
+    public List<String> getBasketItemTitles() {
         REPORT.info("\t- Getting Title List");
         return basketItemTitles.stream()
                 .map(element -> Waiting.waitVisibility(driver, element).getText())
                 .toList();
     }
 
-    private List<Double> getBasketItemPrices() {
+    public List<Double> getBasketItemPrices() {
         REPORT.info("\t- Getting Price List");
         return basketItemPrices.stream()
                 .map(element -> Double.parseDouble(Waiting.waitVisibility(driver, element).getText().replace('€', ' ')))

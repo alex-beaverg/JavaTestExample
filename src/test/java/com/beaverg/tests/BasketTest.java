@@ -43,6 +43,8 @@ public class BasketTest extends BaseTest {
                 .clickGoToCheckoutButton();
         sa.assertTrue(basketPage.isPageOpen("My Shopping Basket"),
                 "Basket Page isn't open!");
+        sa.assertEquals(basketPage.getBasketItemTitles().size(), 1,
+                "Number of products in basket isn't equal to quantity added!");
 
         ProductCard productCardFromBasket = basketPage
                 .getBasketItemByIndex(0);
@@ -73,7 +75,7 @@ public class BasketTest extends BaseTest {
                 .getProductList()
                 .getProductCardByIndex(1);
         mobilePhonesAndroidPage.getProductList().clickAddToBasketByIndex(0);
-        homePage.getTopMenuComponent().closeBasketDropComponent();
+        mobilePhonesAndroidPage.refreshCurrentPage();
         BasketDropComponent basketDropComponent = mobilePhonesAndroidPage
                 .getProductList()
                 .clickAddToBasketByIndex(1);
@@ -91,6 +93,8 @@ public class BasketTest extends BaseTest {
                 "Product Cards aren't equal!");
         sa.assertEquals(productCardFromBasket2, productCardFromProductsPage2,
                 "Product Cards aren't equal!");
+        sa.assertEquals(basketPage.getBasketItemTitles().size(), 2,
+                "Number of products in basket isn't equal to quantity added!");
 
         sa.assertAll();
     }

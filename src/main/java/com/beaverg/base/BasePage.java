@@ -25,4 +25,9 @@ public class BasePage extends BaseElement {
         REPORT.info("[INFO]: Getting Top Menu");
         return topMenuComponent;
     }
+
+    public void refreshCurrentPage() {
+        REPORT.info("[INFO]: Refreshing current page");
+        driver.navigate().refresh();
+    }
 }

@@ -1,6 +1,7 @@
 package com.beaverg.components.part_of_page;
 
 import com.beaverg.base.BaseElement;
+import com.beaverg.components.drop.BasketDropComponent;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,9 +19,9 @@ public class TopMenuComponent extends BaseElement {
         this.driver = driver;
     }
 
-    public void closeBasketDropComponent() {
-        Waiting.waitPageLoading(driver);
+    public BasketDropComponent getBasketDropComponent() {
         Waiting.clickWithWaiting(driver, basketButton);
-        REPORT.info("[INFO]: Basket drop component was closed!");
+        REPORT.info("[INFO]: Basket drop component was opened!");
+        return new BasketDropComponent(driver);
     }
 }

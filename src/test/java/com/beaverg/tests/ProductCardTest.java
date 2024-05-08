@@ -1,11 +1,13 @@
 package com.beaverg.tests;
 
 import com.beaverg.base.BaseTest;
+import com.beaverg.components.drop.BrandsDropMenuComponent;
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.*;
 import com.beaverg.utils.PropertyGetter;
 import io.qameta.allure.*;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -267,6 +269,31 @@ public class ProductCardTest extends BaseTest {
                 "Other accessories Page isn't open!");
 
         compareCards(accessoriesPage);
+    }
+
+    @Test
+    @Story("Brand cards testing")
+    @Description("Verifying Brand name product card test")
+    public void verifyBrandNameProductCardTest() {
+        HomePage homePage = getHomePage();
+
+        for (int i = 0; i < 1000; i++) {
+            BrandsDropMenuComponent brandsDropMenuComponent = homePage
+                    .getMainMenuElement()
+                    .clickBrandsItem();
+            String brandName;
+            try {
+                brandName = brandsDropMenuComponent.getBrandNameByIndex(i);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                break;
+            }
+            ProductListPage brandPage = brandsDropMenuComponent
+                    .clickBrandIconByIndex(i);
+            Assert.assertTrue(brandPage.isPageOpen(brandName),
+                    String.format("%s Page isn't open!", brandName));
+
+            compareCards(brandPage);
+        }
     }
 
     private HomePage getHomePage() {

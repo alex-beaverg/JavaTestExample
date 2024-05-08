@@ -14,6 +14,9 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Epic("Web Mobile Shop testing")
 @Feature("Basket testing")
 public class BasketTest extends BaseTest {
@@ -68,31 +71,23 @@ public class BasketTest extends BaseTest {
         sa.assertTrue(mobilePhonesAndroidPage.isPageOpen("Android OS"),
                 "Android mobile phones Page isn't open!");
 
-        ProductCard productCardFromProductsPage1 = mobilePhonesAndroidPage
-                .getProductList()
-                .getProductCardByIndex(0);
-        ProductCard productCardFromProductsPage2 = mobilePhonesAndroidPage
-                .getProductList()
-                .getProductCardByIndex(1);
-        mobilePhonesAndroidPage.getProductList().clickAddToBasketByIndex(0);
-        mobilePhonesAndroidPage.refreshCurrentPage();
-        BasketDropComponent basketDropComponent = mobilePhonesAndroidPage
-                .getProductList()
-                .clickAddToBasketByIndex(1);
-
-        BasketPage basketPage = basketDropComponent
+        List<ProductCard> cardsFromProductsPage = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            cardsFromProductsPage.add(mobilePhonesAndroidPage.getProductList().getProductCardByIndex(i));
+            mobilePhonesAndroidPage.getProductList().clickAddToBasketByIndex(i);
+            mobilePhonesAndroidPage.refreshCurrentPage();
+        }
+        BasketPage basketPage = mobilePhonesAndroidPage
+                .getTopMenuComponent()
+                .getBasketDropComponent()
                 .clickGoToCheckoutButton();
-        sa.assertTrue(basketPage.isPageOpen("My Shopping Basket"),
-                "Basket Page isn't open!");
+        sa.assertTrue(basketPage.isPageOpen("My Shopping Basket"), "Basket Page isn't open!");
 
-        ProductCard productCardFromBasket1 = basketPage
-                .getBasketItemByIndex(0);
-        ProductCard productCardFromBasket2 = basketPage
-                .getBasketItemByIndex(1);
-        sa.assertEquals(productCardFromBasket1, productCardFromProductsPage1,
-                "Product Cards aren't equal!");
-        sa.assertEquals(productCardFromBasket2, productCardFromProductsPage2,
-                "Product Cards aren't equal!");
+        List<ProductCard> cardsFromBasket = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            cardsFromBasket.add(basketPage.getBasketItemByIndex(i));
+        }
+        sa.assertEquals(cardsFromBasket, cardsFromProductsPage, "Product Cards aren't equal!");
         sa.assertEquals(basketPage.getBasketItemTitles().size(), 2,
                 "Number of products in basket isn't equal to quantity added!");
 

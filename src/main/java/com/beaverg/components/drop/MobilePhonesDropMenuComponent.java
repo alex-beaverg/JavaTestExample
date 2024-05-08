@@ -1,6 +1,6 @@
-package com.beaverg.components;
+package com.beaverg.components.drop;
 
-import com.beaverg.pages.MobilePhonesPage;
+import com.beaverg.pages.ProductListPage;
 import com.beaverg.base.BaseElement;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
@@ -24,21 +24,21 @@ public class MobilePhonesDropMenuComponent extends BaseElement {
         this.driver = driver;
     }
 
-    public MobilePhonesPage clickAndroidIcon() {
+    public ProductListPage clickAndroidIcon() {
         Waiting.clickWithWaiting(driver, androidIcon);
         REPORT.info("[INFO]: Drop menu item 'Android' was clicked!");
-        return new MobilePhonesPage(driver);
+        return new ProductListPage(driver);
     }
 
-    public MobilePhonesPage clickIOSIcon() {
+    public ProductListPage clickIOSIcon() {
         Waiting.clickWithWaiting(driver, iOSIcon);
         REPORT.info("[INFO]: Drop menu item 'iOS' was clicked!");
-        return new MobilePhonesPage(driver);
+        return new ProductListPage(driver);
     }
 
-    public MobilePhonesPage clickPremiumIcon() {
+    public ProductListPage clickPremiumIcon() {
         Waiting.clickWithWaiting(driver, premiumIcon);
         REPORT.info("[INFO]: Drop menu item 'Premium phones' was clicked!");
-        return new MobilePhonesPage(driver);
+        return new ProductListPage(driver);
     }
 }

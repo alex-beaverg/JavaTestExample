@@ -18,7 +18,7 @@ public class ProductCardTest extends BaseTest {
     public void verifyAndroidMobilePhoneProductCardTest() {
         HomePage homePage = getHomePageWithAssertion();
 
-        MobilePhonesPage mobilePhonesAndroidPage = homePage
+        ProductListPage mobilePhonesAndroidPage = homePage
                 .getMainMenuElement()
                 .clickMobilePhonesItem()
                 .clickAndroidIcon();
@@ -33,7 +33,7 @@ public class ProductCardTest extends BaseTest {
     public void verifyIOSMobilePhoneProductCardTest() {
         HomePage homePage = getHomePageWithAssertion();
 
-        MobilePhonesPage mobilePhonesIOSPage = homePage
+        ProductListPage mobilePhonesIOSPage = homePage
                 .getMainMenuElement()
                 .clickMobilePhonesItem()
                 .clickIOSIcon();
@@ -48,7 +48,7 @@ public class ProductCardTest extends BaseTest {
     public void verifyPremiumMobilePhoneProductCardTest() {
         HomePage homePage = getHomePageWithAssertion();
 
-        MobilePhonesPage mobilePhonesPremiumPage = homePage
+        ProductListPage mobilePhonesPremiumPage = homePage
                 .getMainMenuElement()
                 .clickMobilePhonesItem()
                 .clickPremiumIcon();
@@ -65,14 +65,14 @@ public class ProductCardTest extends BaseTest {
         return homePage;
     }
 
-    private void compareCards(MobilePhonesPage page) {
+    private void compareCards(ProductListPage productListPage) {
         SoftAssert sa = new SoftAssert();
 
         int productIndex = Integer.parseInt(Config.getData("product_index"));
-        ProductCard productCardFromProductsPage = page
+        ProductCard productCardFromProductsPage = productListPage
                 .getProductList()
                 .getProductCardByIndex(productIndex);
-        ProductPage productPage = page
+        ProductPage productPage = productListPage
                 .getProductList()
                 .clickProductCardTitleByIndex(productIndex);
         sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");

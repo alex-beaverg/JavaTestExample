@@ -1,4 +1,4 @@
-package com.beaverg.components;
+package com.beaverg.components.part_of_page;
 
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.ProductPage;

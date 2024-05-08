@@ -1,20 +1,20 @@
 package com.beaverg.pages;
 
 import com.beaverg.base.BasePage;
-import com.beaverg.components.ProductListComponent;
+import com.beaverg.components.part_of_page.ProductListComponent;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MobilePhonesPage extends BasePage {
+public class ProductListPage extends BasePage {
     private final WebDriver driver;
     private final ProductListComponent productList;
 
     @FindBy(xpath = "//header//h1/span")
     private WebElement title;
 
-    public MobilePhonesPage(WebDriver driver) {
+    public ProductListPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
         productList = new ProductListComponent(this.driver);

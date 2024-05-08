@@ -20,8 +20,15 @@ public class BrandsDropMenuComponent extends BaseElement {
         this.driver = driver;
     }
 
+    public int getBrandNamesNumber() {
+        Waiting.waitVisibility(driver, brandIcons.get(0));
+        REPORT.info("[INFO]: Getting number of brands from Brands drop menu");
+        return brandIcons.size();
+    }
+
     public String getBrandNameByIndex(int brandIndex) {
         Waiting.waitVisibility(driver, brandIcons.get(brandIndex));
+        REPORT.info(String.format("[INFO]: Getting brand name '%s' by index=%d", brandIcons.get(brandIndex).getText(), brandIndex));
         return brandIcons.get(brandIndex).getText();
     }
 

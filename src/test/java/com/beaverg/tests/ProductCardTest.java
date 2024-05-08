@@ -271,29 +271,42 @@ public class ProductCardTest extends BaseTest {
         compareCards(accessoriesPage);
     }
 
-    @Test
+    @Test(dataProvider = "brandIndexes")
     @Story("Brand cards testing")
     @Description("Verifying Brand name product card test")
-    public void verifyBrandNameProductCardTest() {
+    public void verifyBrandNameProductCardTest(int brandIndex) {
         HomePage homePage = getHomePage();
 
-        for (int i = 0; i < 1000; i++) {
-            BrandsDropMenuComponent brandsDropMenuComponent = homePage
-                    .getMainMenuElement()
-                    .clickBrandsItem();
-            String brandName;
-            try {
-                brandName = brandsDropMenuComponent.getBrandNameByIndex(i);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                break;
-            }
-            ProductListPage brandPage = brandsDropMenuComponent
-                    .clickBrandIconByIndex(i);
-            Assert.assertTrue(brandPage.isPageOpen(brandName),
-                    String.format("%s Page isn't open!", brandName));
+        BrandsDropMenuComponent brandsDropMenuComponent = homePage
+                .getMainMenuElement()
+                .clickBrandsItem();
+        String brandName = brandsDropMenuComponent.getBrandNameByIndex(brandIndex);
+        ProductListPage brandPage = brandsDropMenuComponent
+                .clickBrandIconByIndex(brandIndex);
+        Assert.assertTrue(brandPage.isPageOpen(brandName),
+                String.format("%s Page isn't open!", brandName));
 
-            compareCards(brandPage);
+        compareCards(brandPage);
+    }
+
+    @DataProvider(name = "brandIndexes")
+    public Object[][] getBrandIndexes() {
+        int brandsNumber = getBrandsNumber();
+        Object[][] brandIndexes = new Object[brandsNumber][1];
+        for (int i = 0; i < brandsNumber; i++) {
+            brandIndexes[i][0] = i;
         }
+        return brandIndexes;
+    }
+
+    private int getBrandsNumber() {
+        setup();
+        int numbers = getHomePage()
+                .getMainMenuElement()
+                .clickBrandsItem()
+                .getBrandNamesNumber();
+        teardown();
+        return numbers;
     }
 
     private HomePage getHomePage() {

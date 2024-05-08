@@ -1,11 +1,14 @@
 package com.beaverg.components.part_of_page;
 
+import com.beaverg.components.drop.BasketDropComponent;
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.ProductPage;
 import com.beaverg.base.BaseElement;
 import com.beaverg.utils.Waiting;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -19,6 +22,12 @@ public class ProductListComponent extends BaseElement {
 
     @FindBy(xpath = ".//div//div[@class='price']/div")
     private List<WebElement> productCardPrices;
+
+    @FindBy(xpath = "//div[@class='product-wrap']")
+    private List<WebElement> productCards;
+
+    @FindBy(xpath = "//div[@class='product-wrap']//footer//span")
+    private List<WebElement> addToBasketButtons;
 
     public ProductListComponent(WebDriver driver) {
         super(driver);
@@ -48,5 +57,14 @@ public class ProductListComponent extends BaseElement {
         Waiting.clickWithWaiting(driver, productCardTitles.get(index));
         REPORT.info(String.format("[INFO]: Product Card by index=%d was clicked!", index));
         return new ProductPage(driver);
+    }
+
+    public BasketDropComponent clickAddToBasketByIndex(int index) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", productCards.get(index));
+        Actions action = new Actions(driver);
+        action.moveToElement(productCards.get(index)).perform();
+        Waiting.clickWithWaiting(driver, addToBasketButtons.get(index));
+        REPORT.info(String.format("[INFO]: 'Add to basket' button by index=%d was clicked!", index));
+        return new BasketDropComponent(driver);
     }
 }

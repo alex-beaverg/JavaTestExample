@@ -2,14 +2,11 @@ package com.beaverg.tests;
 
 import com.beaverg.base.BaseTest;
 import com.beaverg.components.drop.BrandsDropMenuComponent;
-import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.*;
-import com.beaverg.utils.PropertyGetter;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 @Epic("Web Mobile Shop testing")
 @Feature("Product cards testing")
@@ -307,31 +304,5 @@ public class ProductCardTest extends BaseTest {
                 .getBrandNamesNumber();
         teardown();
         return numbers;
-    }
-
-    private HomePage getHomePage() {
-        HomePage homePage = new HomePage(driver);
-        homePage.clickCookiesButton();
-        Assert.assertTrue(homePage.isPageOpen(), "Home page isn't open!");
-        return homePage;
-    }
-
-    private void compareCards(ProductListPage productListPage) {
-        SoftAssert sa = new SoftAssert();
-
-        int productIndex = Integer.parseInt(PropertyGetter.getData("product_index"));
-        ProductCard productCardFromProductsPage = productListPage
-                .getProductList()
-                .getProductCardByIndex(productIndex);
-        ProductPage productPage = productListPage
-                .getProductList()
-                .clickProductCardTitleByIndex(productIndex);
-        sa.assertTrue(productPage.isPageOpen(), "Product Page isn't open!");
-
-        ProductCard productCardFromProductPage = productPage.getProductCard();
-        sa.assertEquals(productCardFromProductPage, productCardFromProductsPage,
-                "Product Cards aren't equal!");
-
-        sa.assertAll();
     }
 }

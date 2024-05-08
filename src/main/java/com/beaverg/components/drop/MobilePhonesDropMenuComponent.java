@@ -68,13 +68,13 @@ public class MobilePhonesDropMenuComponent extends BaseElement {
 
     public ProductListPage clickSingleSimIcon() {
         Waiting.clickWithWaiting(driver, singleSimIcon);
-        REPORT.info("[INFO]: Drop menu item 'Top 10 Single SIM phones' was clicked!");
+        REPORT.info("[INFO]: Drop menu item 'Top 10 single SIM phones' was clicked!");
         return new ProductListPage(driver);
     }
 
     public ProductListPage clickDualSimIcon() {
         Waiting.clickWithWaiting(driver, dualSimIcon);
-        REPORT.info("[INFO]: Drop menu item 'Top 10 Dual SIM phones' was clicked!");
+        REPORT.info("[INFO]: Drop menu item 'Top 10 dual SIM phones' was clicked!");
         return new ProductListPage(driver);
     }
 }

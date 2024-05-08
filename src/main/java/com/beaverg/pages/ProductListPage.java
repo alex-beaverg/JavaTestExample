@@ -21,7 +21,7 @@ public class ProductListPage extends BasePage {
     }
 
     public boolean isPageOpen(String pageTitle) {
-        REPORT.info("[INFO]: Premium Mobile Phones Page opening check");
+        REPORT.info(String.format("[INFO]: %s Page opening check", pageTitle));
         return Waiting.waitVisibility(driver, title).isDisplayed() &&
                 Waiting.waitVisibility(driver, title).getText().equals(pageTitle);
     }

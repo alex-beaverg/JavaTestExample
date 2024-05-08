@@ -1,6 +1,7 @@
 package com.beaverg.components.part_of_page;
 
 import com.beaverg.base.BaseElement;
+import com.beaverg.components.drop.AccessoriesDropMenuComponent;
 import com.beaverg.components.drop.ElectronicsDropMenuComponent;
 import com.beaverg.components.drop.MobilePhonesDropMenuComponent;
 import com.beaverg.utils.Waiting;
@@ -18,6 +19,9 @@ public class MainMenuComponent extends BaseElement {
     @FindBy(xpath = ".//button[@data-drop='cat22DropPanel']")
     private WebElement electronicsItem;
 
+    @FindBy(xpath = ".//button[@data-drop='cat9DropPanel']")
+    private WebElement accessoriesItem;
+
     public MainMenuComponent(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -33,5 +37,11 @@ public class MainMenuComponent extends BaseElement {
         Waiting.clickWithWaiting(driver, electronicsItem);
         REPORT.info("[INFO]: Main menu item 'Electronics' was clicked!");
         return new ElectronicsDropMenuComponent(driver);
+    }
+
+    public AccessoriesDropMenuComponent clickAccessoriesItem() {
+        Waiting.clickWithWaiting(driver, accessoriesItem);
+        REPORT.info("[INFO]: Main menu item 'Accessories' was clicked!");
+        return new AccessoriesDropMenuComponent(driver);
     }
 }

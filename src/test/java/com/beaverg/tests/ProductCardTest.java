@@ -237,6 +237,38 @@ public class ProductCardTest extends BaseTest {
         compareCards(hardwarePage);
     }
 
+    @Test
+    @Story("Accessories cards testing")
+    @Description("Verifying Headphones product card test")
+    public void verifyHeadphonesProductCardTest() {
+        HomePage homePage = getHomePage();
+
+        ProductListPage headphonesPage = homePage
+                .getMainMenuElement()
+                .clickAccessoriesItem()
+                .clickHeadphonesIcon();
+        Assert.assertTrue(headphonesPage.isPageOpen("Headphones"),
+                "Headphones Page isn't open!");
+
+        compareCards(headphonesPage);
+    }
+
+    @Test
+    @Story("Accessories cards testing")
+    @Description("Verifying Other accessories product card test")
+    public void verifyAccessoriesProductCardTest() {
+        HomePage homePage = getHomePage();
+
+        ProductListPage accessoriesPage = homePage
+                .getMainMenuElement()
+                .clickAccessoriesItem()
+                .clickAccessoriesIcon();
+        Assert.assertTrue(accessoriesPage.isPageOpen("Other accessories"),
+                "Other accessories Page isn't open!");
+
+        compareCards(accessoriesPage);
+    }
+
     private HomePage getHomePage() {
         HomePage homePage = new HomePage(driver);
         homePage.clickCookiesButton();

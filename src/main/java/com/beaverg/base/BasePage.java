@@ -2,6 +2,7 @@ package com.beaverg.base;
 
 import com.beaverg.components.part_of_page.MainMenuComponent;
 import com.beaverg.components.part_of_page.TopMenuComponent;
+import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage extends BaseElement {
@@ -27,6 +28,7 @@ public class BasePage extends BaseElement {
     }
 
     public void refreshCurrentPage() {
+        Waiting.waitPageLoading(driver);
         REPORT.info("[INFO]: Refreshing current page");
         driver.navigate().refresh();
     }

@@ -59,12 +59,11 @@ public class ProductListComponent extends BaseElement {
         return new ProductPage(driver);
     }
 
-    public BasketDropComponent clickAddToBasketByIndex(int index) {
+    public void clickAddToBasketByIndex(int index) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", productCards.get(index));
         Actions action = new Actions(driver);
         action.moveToElement(productCards.get(index)).perform();
         Waiting.clickWithWaiting(driver, addToBasketButtons.get(index));
         REPORT.info(String.format("[INFO]: 'Add to basket' button by index=%d was clicked!", index));
-        return new BasketDropComponent(driver);
     }
 }

@@ -1,6 +1,7 @@
 package com.beaverg.pages;
 
 import com.beaverg.base.BasePage;
+import com.beaverg.components.popup.DeleteConfirmationComponent;
 import com.beaverg.domain.ProductCard;
 import com.beaverg.utils.Waiting;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,12 @@ public class BasketPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='item']//div[@class='min-w']//preceding-sibling::div[2]")
     private List<WebElement> basketItemPrices;
+
+    @FindBy(xpath = "//div[@class='item'][1]//i[@class='icon-close']")
+    private WebElement deleteProductItem;
+
+    @FindBy(xpath = "//div[@id='checkoutContainer']/h3")
+    private WebElement infoAboutEmptyBasket;
 
     public BasketPage(WebDriver driver) {
         super(driver);
@@ -49,5 +56,18 @@ public class BasketPage extends BasePage {
     public ProductCard getBasketItemByIndex(int index) {
         REPORT.info(String.format("[INFO]: Getting Basket Item from Basket by index=%d!", index));
         return new ProductCard(getBasketItemTitles().get(index), getBasketItemPrices().get(index));
+    }
+
+    public DeleteConfirmationComponent clickDeleteProductItem() {
+        Waiting.waitPageLoading(driver);
+        Waiting.clickWithWaiting(driver, deleteProductItem);
+        REPORT.info("[INFO]: 'Delete product' item was clicked");
+        return new DeleteConfirmationComponent(driver);
+    }
+
+    public boolean isBasketEmpty() {
+        REPORT.info("[INFO]: Basket check");
+        return Waiting.waitVisibility(driver, infoAboutEmptyBasket).isDisplayed() &&
+                Waiting.waitVisibility(driver, infoAboutEmptyBasket).getText().equals("Your shopping basket is empty!");
     }
 }

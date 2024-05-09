@@ -9,6 +9,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -23,16 +24,9 @@ public class BasketTest extends BaseTest {
     @Test(dataProvider = "productsNumber")
     @Story("Adding products to basket testing")
     @Description("Verifying Adding 1/2/3 products to basket test")
-    public void verifyAddingSomeProductsToBasketTest(int productsNumber) {
+    public void verifyAddingProductsToBasketTest(int productsNumber) {
         SoftAssert sa = new SoftAssert();
-        HomePage homePage = getHomePage();
-
-        ProductListPage mobilePhonesAndroidPage = homePage
-                .getMainMenuComponent()
-                .clickMobilePhonesItem()
-                .clickAndroidIcon();
-        sa.assertTrue(mobilePhonesAndroidPage.isPageOpen("Android OS"),
-                "Android mobile phones Page isn't open!");
+        ProductListPage mobilePhonesAndroidPage = getMobilePhonesAndroidPage();
 
         List<ProductCard> cardsFromProductsPage = new ArrayList<>();
         for (int i = 0; i < productsNumber; i++) {
@@ -40,11 +34,7 @@ public class BasketTest extends BaseTest {
             mobilePhonesAndroidPage.getProductList().clickAddToBasketByIndex(i);
             mobilePhonesAndroidPage.refreshCurrentPage();
         }
-        BasketPage basketPage = mobilePhonesAndroidPage
-                .getTopMenuComponent()
-                .getBasketDropComponent()
-                .clickGoToCheckoutButton();
-        sa.assertTrue(basketPage.isPageOpen("My Shopping Basket"), "Basket Page isn't open!");
+        BasketPage basketPage = getBasketPage(mobilePhonesAndroidPage);
 
         List<ProductCard> cardsFromBasket = new ArrayList<>();
         for (int i = 0; i < productsNumber; i++) {
@@ -57,10 +47,52 @@ public class BasketTest extends BaseTest {
         sa.assertAll();
     }
 
+    @Test(dataProvider = "productsNumber")
+    @Story("Adding and deleting products to/from basket testing")
+    @Description("Verifying Adding and deleting 1/2/3 products to/from basket test")
+    public void verifyAddingAndDeletingProductsToBasketTest(int productsNumber) {
+        ProductListPage mobilePhonesAndroidPage = getMobilePhonesAndroidPage();
+
+        for (int i = 0; i < productsNumber; i++) {
+            mobilePhonesAndroidPage.getProductList().clickAddToBasketByIndex(i);
+            mobilePhonesAndroidPage.refreshCurrentPage();
+        }
+
+        BasketPage basketPage = getBasketPage(mobilePhonesAndroidPage);
+        for (int i = 0; i < productsNumber; i++) {
+            basketPage.clickDeleteProductItem().clickConfirmDeletingButton();
+            basketPage.refreshCurrentPage();
+        }
+        Assert.assertTrue(basketPage.isBasketEmpty(), "Basket isn't empty!");
+    }
+
     @DataProvider(name = "productsNumber")
     public Object[][] getProductsNumber() {
         return new Object[][]{
                 { 1 }, { 2 }, { 3 }
         };
+    }
+
+    protected ProductListPage getMobilePhonesAndroidPage() {
+        HomePage homePage = getHomePage();
+
+        ProductListPage mobilePhonesAndroidPage = homePage
+                .getMainMenuComponent()
+                .clickMobilePhonesItem()
+                .clickAndroidIcon();
+        Assert.assertTrue(mobilePhonesAndroidPage.isPageOpen("Android OS"),
+                "Android mobile phones Page isn't open!");
+
+        return mobilePhonesAndroidPage;
+    }
+
+    protected BasketPage getBasketPage(ProductListPage productListPage) {
+        BasketPage basketPage = productListPage
+                .getTopMenuComponent()
+                .getBasketDropComponent()
+                .clickGoToCheckoutButton();
+        Assert.assertTrue(basketPage.isPageOpen("My Shopping Basket"), "Basket Page isn't open!");
+
+        return basketPage;
     }
 }

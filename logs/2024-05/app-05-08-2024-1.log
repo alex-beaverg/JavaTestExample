@@ -1,0 +1,34 @@
+2024-05-08 11:42:34,415 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 11:47:27,001 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 11:53:48,752 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 12:00:07,299 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 13:27:37,547 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyAccessoriesProductCardTest' was failed!
+2024-05-08 13:28:17,203 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 14:20:45,722 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 14:25:38,526 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 14:31:11,917 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 14:32:58,748 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 14:36:12,556 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 14:41:26,555 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 14:45:37,596 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyAccessoriesProductCardTest' was failed!
+2024-05-08 14:47:01,196 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 14:47:30,696 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 14:49:13,608 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifySmartwatchesProductCardTest' was failed!
+2024-05-08 15:42:18,454 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 15:55:42,231 ERROR c.b.l.TestNGListener [main] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 16:09:03,158 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyAccessoriesProductCardTest' was failed!
+2024-05-08 16:11:13,172 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 16:12:02,038 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 16:12:46,693 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifySmartwatchesProductCardTest' was failed!
+2024-05-08 16:17:10,145 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyAccessoriesProductCardTest' was failed!
+2024-05-08 16:20:07,973 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 16:21:11,964 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 16:22:32,535 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifySmartwatchesProductCardTest' was failed!
+2024-05-08 16:24:54,222 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyAccessoriesProductCardTest' was failed!
+2024-05-08 16:27:08,927 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-08 16:27:56,128 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-08 16:28:40,980 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifySmartwatchesProductCardTest' was failed!
+2024-05-08 18:05:50,443 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingOneProductToBasketTest' was failed!
+2024-05-08 20:54:17,181 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingTwoProductsToBasketTest' was failed!
+2024-05-08 21:08:38,799 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingTwoProductsToBasketTest' was failed!
+2024-05-08 21:10:54,163 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingTwoProductsToBasketTest' was failed!

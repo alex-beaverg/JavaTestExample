@@ -1,0 +1,23 @@
+2024-05-09 12:30:25,165 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 12:30:42,118 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 12:30:59,110 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 12:39:07,256 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 12:39:25,107 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:06:23,426 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:06:41,043 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:07:00,193 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:14:00,344 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:14:21,467 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:14:43,014 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:17:42,316 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:20:56,193 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:27:44,441 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:32:58,627 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:33:07,807 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:37:23,861 ERROR c.b.l.TestNGListener [main] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 13:40:19,961 ERROR c.b.l.TestNGListener [TestNG-test=Basket testing-1] Test 'verifyAddingAndDeletingProductsToBasketTest' was failed!
+2024-05-09 15:15:03,529 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyAccessoriesProductCardTest' was failed!
+2024-05-09 15:16:47,628 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-09 15:17:30,193 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyBrandNameProductCardTest' was failed!
+2024-05-09 15:18:19,483 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifyHardwareProductCardTest' was failed!
+2024-05-09 15:19:03,507 ERROR c.b.l.TestNGListener [TestNG-test=Product cards testing-1] Test 'verifySmartwatchesProductCardTest' was failed!

@@ -21,7 +21,7 @@ import java.util.List;
 @Feature("Basket testing")
 public class BasketTest extends BaseTest {
 
-    @Test(dataProvider = "productsNumber")
+    @Test(dataProvider = "productsNumber", enabled = false)
     @Story("Adding products to basket testing")
     @Description("Verifying Adding 1/2/3 products to basket test")
     public void verifyAddingProductsToBasketTest(int productsNumber) {

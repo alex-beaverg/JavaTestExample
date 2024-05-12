@@ -1,6 +1,5 @@
 package com.beaverg.components.part_of_page;
 
-import com.beaverg.components.drop.BasketDropComponent;
 import com.beaverg.domain.ProductCard;
 import com.beaverg.pages.ProductPage;
 import com.beaverg.base.BaseElement;
@@ -15,8 +14,6 @@ import java.util.List;
 
 @FindBy(xpath = "//div[@class='products-list']")
 public class ProductListComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = ".//div//h5/a")
     private List<WebElement> productCardTitles;
 
@@ -31,7 +28,6 @@ public class ProductListComponent extends BaseElement {
 
     public ProductListComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     private List<String> getProductCardTitles() {

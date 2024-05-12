@@ -10,14 +10,11 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class BrandsDropMenuComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = "//ul[@class='drop-menu']/li//img/following-sibling::span")
     private List<WebElement> brandIcons;
 
     public BrandsDropMenuComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public int getBrandNamesNumber() {

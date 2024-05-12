@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductPage extends BasePage {
-    private final WebDriver driver;
-
     @FindBy(xpath = "//h1[@class='product-name']")
     private WebElement title;
 
@@ -18,7 +16,6 @@ public class ProductPage extends BasePage {
 
     public ProductPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public boolean isPageOpen() {

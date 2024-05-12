@@ -11,8 +11,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class BasketPage extends BasePage {
-    private final WebDriver driver;
-
     @FindBy(xpath = "//div[@class='container']/h1")
     private WebElement title;
 
@@ -30,7 +28,6 @@ public class BasketPage extends BasePage {
 
     public BasketPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public boolean isPageOpen(String pageTitle) {

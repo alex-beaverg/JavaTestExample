@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductListPage extends BasePage {
-    private final WebDriver driver;
     private final ProductListComponent productList;
 
     @FindBy(xpath = "//header//h1/span")
@@ -16,7 +15,6 @@ public class ProductListPage extends BasePage {
 
     public ProductListPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         productList = new ProductListComponent(this.driver);
     }
 

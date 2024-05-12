@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AccessoriesDropMenuComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = "//ul[@class='drop-menu']//a[contains(@href, 'headphones')]/span")
     private WebElement headphonesIcon;
 
@@ -19,7 +17,6 @@ public class AccessoriesDropMenuComponent extends BaseElement {
 
     public AccessoriesDropMenuComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public ProductListPage clickHeadphonesIcon() {

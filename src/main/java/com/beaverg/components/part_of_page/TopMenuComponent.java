@@ -9,14 +9,11 @@ import org.openqa.selenium.support.FindBy;
 
 @FindBy(xpath = "//nav[@class='top-menu']")
 public class TopMenuComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = ".//button[@data-drop='basketDropPanel']")
     private WebElement basketButton;
 
     public TopMenuComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public BasketDropComponent getBasketDropComponent() {

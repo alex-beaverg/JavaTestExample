@@ -8,14 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class BasketDropComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = "//div[@id='basketDropPanel']//footer//span")
     private WebElement goToCheckoutButton;
 
     public BasketDropComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public BasketPage clickGoToCheckoutButton() {

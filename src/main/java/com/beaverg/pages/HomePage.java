@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
     private final String home_url;
-    private final WebDriver driver;
 
     @FindBy(xpath = "//a[@class='button db ghost']")
     private WebElement cookiesButton;
@@ -17,7 +16,6 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
         home_url = PropertyGetter.getProperty("home_url");
-        this.driver = driver;
         this.driver.get(home_url);
     }
 

@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MobilePhonesDropMenuComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = "//i[@class='icon-android']/following-sibling::span")
     private WebElement androidIcon;
 
@@ -33,7 +31,6 @@ public class MobilePhonesDropMenuComponent extends BaseElement {
 
     public MobilePhonesDropMenuComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public ProductListPage clickAndroidIcon() {

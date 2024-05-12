@@ -7,14 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class DeleteConfirmationComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = "//button[@name='jqi_state0_buttonYesDeleteit']")
     private WebElement confirmDeletingButton;
 
     public DeleteConfirmationComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public void clickConfirmDeletingButton() {

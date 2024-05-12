@@ -12,8 +12,6 @@ import org.openqa.selenium.support.FindBy;
 
 @FindBy(xpath = "//nav[@class='main-menu']")
 public class MainMenuComponent extends BaseElement {
-    private final WebDriver driver;
-
     @FindBy(xpath = ".//button[@data-drop='catMainDropPanel']")
     private WebElement mobilePhonesItem;
 
@@ -28,7 +26,6 @@ public class MainMenuComponent extends BaseElement {
 
     public MainMenuComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public MobilePhonesDropMenuComponent clickMobilePhonesItem() {
